@@ -1,0 +1,29 @@
+{
+  "name": "andogarniacz",
+  "version": "0.1.0",
+  "description": "tool do ogarniania urządzeń Android za pomocą komend ADB",
+  "main": "app.js",
+  "scripts": {
+    "test_mem": "node ./tests/measureMemory_test.js",
+    "run_app": "electron ./app.js",
+    "package": "electron-builder --dir",
+    "distribute": "electron-builder"
+  },
+  "dependencies": {
+
+  },
+  "devDependencies": {
+    "electron": "^8.1.1",
+    "electron-builder": "^22.7.0"
+  },
+  "build": {
+    "appId": "com.am.android-caretaker",
+    "productName": "Android Caretaker",
+    "copyright": "Copyright © 2020 Adrian Rutkiewicz",
+    "directories": {
+      "output": "./build"
+    }
+  },
+  "author": "arutkiewicz",
+  "license": "Copyright Adrian Rutkiewicz"
+}
