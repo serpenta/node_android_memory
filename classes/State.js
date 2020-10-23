@@ -7,12 +7,12 @@ class ProgramState
     constructor()
     {
         this.maxValue = null;
-        this.fiveSecVals = [];
+        this.tenSecVals = [];
     }
 
     static setMaxValue(value)
     {
-        programState.maxValue = value;
+        programState.maxValue = Math.round(value / 1000);
         return null;
     }
 
@@ -23,15 +23,15 @@ class ProgramState
 
     static addMeasurementToAverage(value)
     {
-        programState.fiveSecVals.push(value);
-        if (programState.fiveSecVals.length > 10)
-            programState.fiveSecVals.splice(0,1);
+        programState.tenSecVals.push(Math.round(value / 1000));
+        if (programState.tenSecVals.length > 20)
+            programState.tenSecVals.splice(0,1);
     }
 
     static fetchTenSecAvg()
     {
         const average = (accumulator, current) => accumulator + current;
-        return Math.round(programState.fiveSecVals.reduce(average) / programState.fiveSecVals.length);
+        return Math.round(programState.tenSecVals.reduce(average) / programState.tenSecVals.length);
     }
 
     static init()
