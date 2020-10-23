@@ -25,7 +25,8 @@ async function memInfo(deviceIdString)
             const totalsArray = value.match(/(\d+)/);
             const totalVal = parseInt(totalsArray[0]);
             if (totalVal > ProgramState.getMaxValue()) ProgramState.setMaxValue(totalVal);
-            console.log(`[memInfo]: MAX: ${ProgramState.getMaxValue()}, current: ${totalVal}`);
+            ProgramState.addMeasurementToAverage(totalVal);
+            console.log(`[memInfo]: MAX: ${ProgramState.getMaxValue()}, current: ${ProgramState.fetchTenSecAvg()}`);
         });
 }
 

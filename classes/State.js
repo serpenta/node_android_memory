@@ -7,6 +7,7 @@ class ProgramState
     constructor()
     {
         this.maxValue = null;
+        this.fiveSecVals = [];
     }
 
     static setMaxValue(value)
@@ -15,9 +16,22 @@ class ProgramState
         return null;
     }
 
-    static getMaxValue(value)
+    static getMaxValue()
     {
         return programState.maxValue;
+    }
+
+    static addMeasurementToAverage(value)
+    {
+        programState.fiveSecVals.push(value);
+        if (programState.fiveSecVals.length > 10)
+            programState.fiveSecVals.splice(0,1);
+    }
+
+    static fetchTenSecAvg()
+    {
+        const average = (accumulator, current) => accumulator + current;
+        return Math.round(programState.fiveSecVals.reduce(average) / programState.fiveSecVals.length);
     }
 
     static init()
