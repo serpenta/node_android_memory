@@ -13,5 +13,26 @@
     Chrome <script>document.write(process.versions.chrome)</script>,
     and Electron <script>document.write(process.versions.electron)</script>.
     <script type="text/javascript" src="../views/main_view.js"></script>
+    <div class="feature-control">
+      <h3>Main controls</h3>
+      <div class="feature-control__button-group">
+        <button class="btn btn-primary" id="run-measurement">Run</button>
+        <label>Run Measurement</label>
+      </div>
+
+      <div class="feature-control__button-group">
+        <button class="btn btn-primary" id="reset-max">Max</button>
+        <label>Reset Max</label>
+      </div>
+
+      <div class="feature-control__button-group">
+        <button class="btn btn-primary" id="stop-measurement">Stop</button>
+        <label>Stop Measurement</label>
+      </div>
+    </div>
+
+    <div class="results">
+      <h3>Measurement results</h3>
+    </div>
   </body>
 </html>
