@@ -1,25 +1,14 @@
 const { ipcRenderer } = require('electron');
 
-const getRadio = radioName =>
-{
-    const radio = document.getElementsByName(radioName);
-    let value = null;
-    radio.forEach(el => 
-        {
-            if (el.checked)
-            {
-                value = el.value;
-            } 
-        });
-    return value;
-}
+document
+    .getElementById('run-measurement')
+    .addEventListener('click', () => ipcRenderer.send('btn-run-measurement'));
 
-const getCheckbox = boxName =>
-{
-    return document.getElementById(boxName).checked;
-}
-
-const getInput = input =>
-{
-    return document.getElementById(input).value;
-}
+document
+    .getElementById('reset-max')
+    .addEventListener('click', () => ipcRenderer.send('btn-reset-max'));
+    
+document
+    .getElementById('stop-measurement')
+    .addEventListener('click', () => ipcRenderer.send('btn-stop-measurement'));
+    

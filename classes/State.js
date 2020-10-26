@@ -17,6 +17,12 @@ class ProgramState
         return null;
     }
 
+    static resetJobDone()
+    {
+        programState.jobDone = false;
+        return null;
+    }
+
     static setMaxValue(value)
     {
         programState.maxValue = Math.round(value / 1000);
