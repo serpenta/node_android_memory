@@ -6,14 +6,26 @@ class ProgramState
 {
     constructor()
     {
+        this.jobDone = null;
         this.maxValue = null;
         this.tenSecVals = [];
+    }
+
+    static setJobDone()
+    {
+        programState.jobDone = true;
+        return null;
     }
 
     static setMaxValue(value)
     {
         programState.maxValue = Math.round(value / 1000);
         return null;
+    }
+
+    static getJobDone()
+    {
+        return programState.jobDone;
     }
 
     static getMaxValue()
@@ -37,6 +49,7 @@ class ProgramState
     static init()
     {
         programState = new ProgramState();
+        programState.jobDone = false;
         console.log(`[ProgramState]: initialized!`);
         return null;
     }
