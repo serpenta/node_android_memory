@@ -1,5 +1,8 @@
 const path = require('path');
-const cmdController = require(path.resolve('./controllers/cmd_ctrl.js'));
+const cmdController = require(path.resolve('./controllers/cmd_ctrl'));
+const { ProgramState } = require(path.resolve('./classes/State'));
+
+ProgramState.init();
 
 async function measureMemory(deviceID)
 {

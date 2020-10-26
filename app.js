@@ -1,7 +1,9 @@
 const { app, ipcMain, BrowserWindow } = require('electron');
 
 const cmdController = require('./controllers/cmd_ctrl');
-const path = require('path');
+const { ProgramState } = require('./classes/State');
+
+ProgramState.init();
 
 const createWindow = () =>
 {

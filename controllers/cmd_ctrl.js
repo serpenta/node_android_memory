@@ -3,8 +3,6 @@ const path = require('path');
 
 const { ProgramState } = require(path.resolve('./classes/State'));
 
-ProgramState.init();
-
 function runCmd(command)
 {
     return new Promise((resolve, reject) => {
@@ -26,7 +24,7 @@ async function memInfo(deviceIdString)
             const totalVal = parseInt(totalsArray[0]);
             if (totalVal / 1000 > ProgramState.getMaxValue()) ProgramState.setMaxValue(totalVal);
             ProgramState.addMeasurementToAverage(totalVal);
-            
+
             console.log(`[memInfo]:
             current: ${totalVal} kB
             rollingAvg: ${ProgramState.fetchTenSecAvg()} mB
