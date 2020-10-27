@@ -1,4 +1,4 @@
-const { app, ipcMain, BrowserWindow } = require('electron');
+const { app, ipcMain, ipc, BrowserWindow } = require('electron');
 
 const cmdController = require('./controllers/cmd_ctrl');
 const { ProgramState } = require('./classes/State');
@@ -23,7 +23,7 @@ const createWindow = () =>
 app.on('ready', createWindow);
 app.on('window-all-closed', () => app.quit());
 
-ipcMain.on('btn-run-measurement', (e) => {
+ipcMain.on('btn-run-measurement', (event) => {
     ProgramState.resetJobDone();
 
     const interval  = setInterval(measureMemory, 500, deviceID="");
@@ -34,7 +34,12 @@ ipcMain.on('btn-run-measurement', (e) => {
 
         const deviceIdString = deviceID === "" ? deviceID : `-s ${deviceID}`;
 
-        cmdController.memInfo(deviceIdString);
+        await cmdController.memInfo(deviceIdString);
+
+        event.sender.send('print-results',
+            ProgramState.getCurrentValue(),
+            ProgramState.getMaxValue(),
+            ProgramState.fetchTenSecAvg());
     }
 });
 

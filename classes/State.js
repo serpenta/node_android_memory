@@ -34,6 +34,11 @@ class ProgramState
         return programState.jobDone;
     }
 
+    static getCurrentValue()
+    {
+        return programState.tenSecVals[programState.tenSecVals.length -1];
+    }
+
     static getMaxValue()
     {
         return programState.maxValue;
