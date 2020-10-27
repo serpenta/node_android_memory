@@ -46,7 +46,7 @@ class ProgramState
 
     static addMeasurementToAverage(value)
     {
-        programState.tenSecVals.push(Math.round(value / 1000));
+        programState.tenSecVals.push(value);
         if (programState.tenSecVals.length > 20)
             programState.tenSecVals.splice(0,1);
     }
@@ -54,7 +54,7 @@ class ProgramState
     static fetchTenSecAvg()
     {
         const average = (accumulator, current) => accumulator + current;
-        return Math.round(programState.tenSecVals.reduce(average) / programState.tenSecVals.length);
+        return Math.round(programState.tenSecVals.reduce(average) / programState.tenSecVals.length / 1000);
     }
 
     static init()
