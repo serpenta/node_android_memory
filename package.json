@@ -1,7 +1,7 @@
 {
-  "name": "andogarniacz",
+  "name": "andmemory",
   "version": "0.1.0",
-  "description": "tool do ogarniania urządzeń Android za pomocą komend ADB",
+  "description": "tool do mierzenia zużycia pamięci za pomocą ADB",
   "main": "app.js",
   "scripts": {
     "test_mem": "node ./tests/measureMemory_test.js",
@@ -9,21 +9,27 @@
     "package": "electron-builder --dir",
     "distribute": "electron-builder"
   },
-  "dependencies": {
-
-  },
+  "dependencies": {},
   "devDependencies": {
     "electron": "^8.1.1",
-    "electron-builder": "^22.7.0"
+    "electron-builder": "^22.9.1"
   },
   "build": {
-    "appId": "com.am.android-caretaker",
-    "productName": "Android Caretaker",
+    "appId": "com.ar.android-memory",
+    "productName": "Android Memory",
     "copyright": "Copyright © 2020 Adrian Rutkiewicz",
     "directories": {
-      "output": "./build"
+      "output": "./build/${version}"
     }
   },
   "author": "arutkiewicz",
-  "license": "Copyright Adrian Rutkiewicz"
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/serpenta/node_android_memory.git"
+  },
+  "bugs": {
+    "url": "https://github.com/serpenta/node_android_memory/issues"
+  },
+  "homepage": "https://github.com/serpenta/node_android_memory#readme"
 }

@@ -1,7 +1,6 @@
 const childProcess = require('child_process');
-const path = require('path');
 
-const { ProgramState } = require(path.resolve('./classes/State'));
+const { ProgramState } = require('../classes/State');
 
 function runCmd(command)
 {

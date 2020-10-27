@@ -1,4 +1,4 @@
-const { app, ipcMain, ipc, BrowserWindow } = require('electron');
+const { app, ipcMain, BrowserWindow } = require('electron');
 
 const cmdController = require('./controllers/cmd_ctrl');
 const { ProgramState } = require('./classes/State');

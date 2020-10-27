@@ -1,5 +1,3 @@
-const path = require('path');
-
 let programState = null;
 
 class ProgramState
