@@ -1,64 +1,60 @@
-let programState = null;
+// let programState = null;
 
 class ProgramState
 {
-    constructor()
-    {
-        this.jobDone = null;
-        this.maxValue = null;
-        this.tenSecVals = [];
-    }
+    static jobDone = null;
+    static maxValue = null;
+    static tenSecVals = [];
 
     static setJobDone()
     {
-        programState.jobDone = true;
+        this.jobDone = true;
         return null;
     }
 
     static resetJobDone()
     {
-        programState.jobDone = false;
+        this.jobDone = false;
         return null;
     }
 
     static setMaxValue(value)
     {
-        programState.maxValue = Math.round(value / 1000);
+        this.maxValue = Math.round(value / 1000);
         return null;
     }
 
     static getJobDone()
     {
-        return programState.jobDone;
+        return this.jobDone;
     }
 
     static getCurrentValue()
     {
-        return programState.tenSecVals[programState.tenSecVals.length -1];
+        return this.tenSecVals[this.tenSecVals.length -1];
     }
 
     static getMaxValue()
     {
-        return programState.maxValue;
+        return this.maxValue;
     }
 
     static addMeasurementToAverage(value)
     {
-        programState.tenSecVals.push(value);
-        if (programState.tenSecVals.length > 20)
-            programState.tenSecVals.splice(0,1);
+        this.tenSecVals.push(value);
+        if (this.tenSecVals.length > 20)
+            this.tenSecVals.splice(0,1);
     }
 
     static fetchTenSecAvg()
     {
         const average = (accumulator, current) => accumulator + current;
-        return Math.round(programState.tenSecVals.reduce(average) / programState.tenSecVals.length / 1000);
+        return Math.round(this.tenSecVals.reduce(average) / this.tenSecVals.length / 1000);
     }
 
     static init()
     {
-        programState = new ProgramState();
-        programState.jobDone = false;
+        this.jobDone = false;
         console.log(`[ProgramState]: initialized!`);
         return null;
     }
