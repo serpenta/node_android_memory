@@ -14,9 +14,9 @@ function runCmd(command)
 
 /** basic functions */
 
-async function memInfo(deviceIdString)
+async function memInfo(deviceIdString, packageName)
 {
-    return runCmd(`adb ${deviceIdString} shell "dumpsys meminfo com.artifexmundi.balefire | grep TOTAL"`)
+    return runCmd(`adb ${deviceIdString} shell "dumpsys meminfo ${packageName} | grep TOTAL"`)
     .then(value => 
         {
             const totalsArray = value.match(/(\d+)/);

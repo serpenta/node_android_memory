@@ -1,5 +1,7 @@
 const { ipcRenderer } = require('electron');
 
+const utils = require('../common/utilities');
+
 ipcRenderer.on('results-display-init', (e) => {
     document.getElementById('results-status').innerHTML = 'NOT Running';
 });
@@ -20,7 +22,11 @@ ipcRenderer.on('print-results', (e, currentVal, maxVal, tenSecAvg) => {
     
 document
     .getElementById('run-measurement')
-    .addEventListener('click', () => ipcRenderer.send('btn-run-measurement'));
+    .addEventListener('click', () => 
+        ipcRenderer.send('btn-run-measurement',
+            utils.getInput('device-id'),
+            utils.getInput('package-name')
+        ));
 
 document
     .getElementById('reset-max')

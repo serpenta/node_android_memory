@@ -22,25 +22,25 @@ app.on('ready', () => {
 
 app.on('window-all-closed', () => app.quit());
 
-ipcMain.on('btn-run-measurement', (event) => {
+ipcMain.on('btn-run-measurement', (event, deviceID, packageName) => {
     ProgramState.resetJobDone();
     event.sender.send('results-status-on');
 
-    const interval  = setInterval(measureMemory, 500, deviceID="");
-
-    async function measureMemory(deviceID)
+    async function measureMemory(deviceID, packageName)
     {
         if (ProgramState.getJobDone()) clearInterval(interval);
 
         const deviceIdString = deviceID === "" ? deviceID : `-s ${deviceID}`;
 
-        await cmdController.memInfo(deviceIdString);
+        await cmdController.memInfo(deviceIdString, packageName);
 
         event.sender.send('print-results',
             ProgramState.getCurrentValue(),
             ProgramState.getMaxValue(),
             ProgramState.fetchTenSecAvg());
     }
+
+    const interval  = setInterval(measureMemory, 500, deviceID, packageName);
 });
 
 ipcMain.on('btn-reset-max', (e) => {
