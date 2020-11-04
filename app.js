@@ -5,26 +5,26 @@ const { ProgramState } = require('./classes/State');
 
 ProgramState.init();
 
-const createWindow = () =>
-{
-    let win = new BrowserWindow
-    ({
+app.on('ready', () => {
+    let win = new BrowserWindow({
         width: 1280,
-        height: 860,
+        heigth: 860,
         webPreferences: {
             nodeIntegration: true
         }
     });
 
     win.loadFile('./windows/main_window.html');
-    return null;
-}
+    win.webContents.on('did-finish-load', () => {
+        win.webContents.send('results-display-init');
+    });
+});
 
-app.on('ready', createWindow);
 app.on('window-all-closed', () => app.quit());
 
 ipcMain.on('btn-run-measurement', (event) => {
     ProgramState.resetJobDone();
+    event.sender.send('results-status-on');
 
     const interval  = setInterval(measureMemory, 500, deviceID="");
 
@@ -47,6 +47,7 @@ ipcMain.on('btn-reset-max', (e) => {
     ProgramState.setMaxValue(0);
 });
 
-ipcMain.on('btn-stop-measurement', (e) => {
+ipcMain.on('btn-stop-measurement', (event) => {
     ProgramState.setJobDone();
+    event.sender.send('results-status-off');
 });

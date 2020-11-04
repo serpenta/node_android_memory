@@ -5,7 +5,7 @@
     <title>QA Scripts</title>
     <!-- https://electronjs.org/docs/tutorial/security#csp-meta-tag -->
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
-    <link rel="stylesheet" type="text/css" href="../css/index.css" />
+    <link rel="stylesheet" type="text/css" href="../css/main_window.css" />
   </head>
   
   <body>
@@ -33,6 +33,11 @@
 
     <div class="results">
       <h3>Measurement results</h3>
+      <div class="results__status">
+        <label>Status:</label>
+        <label class="results__status-display" id="results-status"></label>
+      </div>
+
       <div class="results__group">
         <label class="results__group-label">Current Value</label>
         <p class="results__group-value" id="results-value_current"></p>
