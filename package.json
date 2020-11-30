@@ -17,7 +17,7 @@
   "build": {
     "appId": "com.ar.andmemory",
     "productName": "Android Memory Helper",
-    "copyright": "MIT license",
+    "copyright": "Copyright © 2020 Adrian Rutkiewicz",
     "directories": {
       "output": "./build/${version}"
     }
