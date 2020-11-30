@@ -1,7 +1,7 @@
 {
   "name": "andmemory",
   "version": "0.1.0",
-  "description": "tool do mierzenia zużycia pamięci za pomocą ADB",
+  "description": "GUI for measuring memory usage of an Android app, deployed on a device, using the sysdump memory report",
   "main": "app.js",
   "scripts": {
     "test_mem": "node ./tests/measureMemory_test.js",
@@ -15,15 +15,15 @@
     "electron-builder": "^22.9.1"
   },
   "build": {
-    "appId": "com.ar.android-memory",
-    "productName": "Android Memory",
-    "copyright": "Copyright © 2020 Adrian Rutkiewicz",
+    "appId": "com.ar.andmemory",
+    "productName": "Android Memory Helper",
+    "copyright": "MIT license",
     "directories": {
       "output": "./build/${version}"
     }
   },
-  "author": "arutkiewicz",
-  "license": "UNLICENSED",
+  "author": "Adrian Rutkiewicz",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/serpenta/node_android_memory.git"
