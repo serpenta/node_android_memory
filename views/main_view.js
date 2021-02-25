@@ -31,6 +31,10 @@ document
 document
     .getElementById('reset-max')
     .addEventListener('click', () => ipcRenderer.send('btn-reset-max'));
+
+document
+    .getElementById('reset-avg')
+    .addEventListener('click', () => ipcRenderer.send('btn-reset-avg'));
     
 document
     .getElementById('stop-measurement')

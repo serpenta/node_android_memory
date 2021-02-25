@@ -7,8 +7,8 @@ ProgramState.init();
 
 app.on('ready', () => {
     let win = new BrowserWindow({
-        width: 1280,
-        heigth: 860,
+        width: 900,
+        heigth: 1200,
         webPreferences: {
             nodeIntegration: true
         }
@@ -45,6 +45,10 @@ ipcMain.on('btn-run-measurement', (event, deviceID, packageName) => {
 
 ipcMain.on('btn-reset-max', (e) => {
     ProgramState.setMaxValue(0);
+});
+
+ipcMain.on('btn-reset-avg', (e) => {
+    ProgramState.resetAverage();
 });
 
 ipcMain.on('btn-stop-measurement', (event) => {

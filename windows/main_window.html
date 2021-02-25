@@ -2,17 +2,18 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>QA Scripts</title>
+    <title>Android Memory Tool</title>
     <!-- https://electronjs.org/docs/tutorial/security#csp-meta-tag -->
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
     <link rel="stylesheet" type="text/css" href="../css/main_window.css" />
   </head>
   
   <body>
-    <h1>Android Memory measurement</h1>
+    <h1>Android Memory Tool</h1>
     We are using node <script>document.write(process.versions.node)</script>,
     Chrome <script>document.write(process.versions.chrome)</script>,
     and Electron <script>document.write(process.versions.electron)</script>.
+    
     <div class="feature-setup">
       <h3>Setup</h3>
       <form class="feature-setup__form">
@@ -31,6 +32,11 @@
       <div class="feature-control__button-group">
         <button class="btn btn-primary" id="reset-max">Max</button>
         <label>Reset Max</label>
+      </div>
+
+      <div class="feature-control__button-group">
+        <button class="btn btn-primary" id="reset-avg">Avg</button>
+        <label>Reset Average</label>
       </div>
 
       <div class="feature-control__button-group">

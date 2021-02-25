@@ -18,6 +18,12 @@ class ProgramState
         return null;
     }
 
+    static resetAverage()
+    {
+        this.tenSecVals = [];
+        return null;
+    }
+
     static setMaxValue(value)
     {
         this.maxValue = Math.round(value / 1000);
